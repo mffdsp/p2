@@ -1,0 +1,40 @@
+#include <stdio.h>
+//ReiDelas
+//incompleto
+struct l{
+  int tam;
+  int valor;
+};
+
+typedef struct l lista;
+
+void ord(lista *algo){
+    int i,j,indice;
+    int lista[algo->tam];
+    for( i = 0; i < algo->tam;i++)
+    { 
+        int menor = 50000;
+        for(j = 0;j < algo->tam;j++) 
+        { 
+            if(lista[j] == 0 && algo->valor <= menor)
+            {
+              menor = algo->valor;
+              indice = j;
+            }
+        }
+        printf("%d ", menor); 
+        lista[indice] = 1; 
+    }
+    
+}
+int main() {
+    lista *valor;
+    valor = malloc(sizeof(int));
+    while(scanf("%d", &valor->valor)!=EOF)
+    {
+        valor->tam++;
+        valor = realloc(valor,  valor->tam * 8 );
+    }
+    ord(valor);
+	return 0;
+}
