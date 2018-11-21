@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+typedef int zezinho;
+void impar(zezinho *v){
+	zezinho i;
+	for(i = 0; i < 10; i++)
+	{
+		if(v[i]%2==1)
+		{
+			printf("%d ", v[i]);
+		}
+	}
+
+}
+void par(zezinho *v){
+	zezinho i;
+	for(i = 0; i < 10; i++)
+	{
+		if(v[i]%2==0)
+		{
+			printf("%d ", v[i]);
+		}
+	}
+
+}
+void primo(zezinho *v){
+	zezinho i, j;
+	zezinho primo = 1;
+	for(i = 0; i < 10; i++)
+	{
+		primo = 1;
+		for(j = 2; j < v[i] ; j++)
+		{
+			if((v[i]%j)==0)
+			{
+				primo = 0;
+			}
+		}
+		if(primo && v[i]!=1)
+		{
+			printf("%d ", v[i]);
+		}
+	}
+}
+zezinho filtro(zezinho *v, void *(function)(zezinho*)){
+    function(v);
+}
+zezinho main(){
+
+	zezinho *num, i = 0;
+	num = (zezinho*) malloc(sizeof(zezinho));
+	while(scanf("%d", &num[i])!=EOF)
+	{   
+	    realloc(num, (i+2)*sizeof(zezinho));
+		i++;
+	} 
+	filtro(num,impar);
+	
+}
