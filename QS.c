@@ -21,7 +21,7 @@ void quick_sort(int *v, int size){
 	    	if (a<=b)
 		{
 	    		swap(&v[a],&v[b]);
-			a++;b--;                 //24
+			a++;          		//24
 		}
 		    
 	    }
