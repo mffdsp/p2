@@ -11,13 +11,13 @@ void quick_sort(int *v, int size){
 	}
 	else 
 	{
-	    int pivor=v[size/2];
+	    int pivot=v[size/2];
 	    int a=0;
 	    int b=size-1;
 
 	    while (a < b){
-	    	while(v[a]<pivor && a<size) a++; // 18
-	    	while(v[b]>pivor && b>=0) b--;   // 19
+	    	while(v[a]<pivot && a<size) a++; // 18
+	    	while(v[b]>pivot && b>=0) b--;   // 19
 	    	if (a<=b)
 		{
 	    		swap(&v[a],&v[b]);
