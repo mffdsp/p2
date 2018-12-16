@@ -1,9 +1,4 @@
 
-//O código possuia erro nas linhas 18 e 19, pois os indices a e/ou b, poderiam assumir valores abaixo de 0 ou acima do tamanho do array;
-//Tbm, para casos com numeros repetidos a correção está linha 24;
-
-
-
 void quick_sort(int *v, int size){
 
 	if (size <=1){
