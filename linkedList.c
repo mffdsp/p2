@@ -74,9 +74,9 @@ int main(){
 	head = add(head, 7);
 	printLista(head);
 	puts("----");
-    head = remover(head,27);
+        head = remover(head,27);
 	printLista(head);
-    search_list(head, 3) ? puts("\n \\o/ Found it!") : puts("\n;-; I haven't found!");
+        search_list(head, 3) ? puts("\n \\o/ Found it!") : puts("\n;-; I haven't found!");
     
 
 }
