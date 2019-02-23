@@ -41,10 +41,11 @@ element* add_fila(element *head, int item, int *gasto) // inserir no final da li
 	novo->key = item;
 	novo->value = item;
     element *aux = head; 
+    *gasto += 1;
     while(aux->next != NULL)
         {	
+            *gasto += 1;
             maiorlista++;
-        	*gasto += 1;
             aux = aux->next;
             if(maiorlista > M_lista)
             {
@@ -64,6 +65,7 @@ element* add_fila_sem_gasto(element *head, int item) // inserir no final da list
     element *aux = head; 
     while(aux->next != NULL)
         {	
+            
             aux = aux->next;
         }
     aux->next = novo;
@@ -97,17 +99,20 @@ void readd(hash *hs){
 	}
 
 }
+int k = 0;
 int add(hash *hs, int key, int value, int primo, int *gasto){
     int j;
-    for(j = 0; j < hs->size; j++)
+    int h = key % primo;
+    for(j = 0; j <= hs->size; j++)
     {
         if(pertencidos[j] == value)
         {
+            *gasto += 1;
             return 0;
         }
     }
-    pertencidos[hs->size] = value;
-	int h = key % primo;
+    pertencidos[k] = value;
+    k++;
 	element *novo = (element*) malloc(sizeof(element));
 	novo->key = key;
 	novo->value = value;
@@ -118,6 +123,7 @@ int add(hash *hs, int key, int value, int primo, int *gasto){
 	}
 	else 
 	{
+	    
 	    element *save = hs->grupo[h];
 	    save = add_fila(save, value, gasto);
 	    hs->grupo[h] = save;
@@ -135,7 +141,7 @@ int get(hash *hs, int key, int *gasto){
 		{
 			return 1;
 		}
-		h = (h + 1)	% MAX;
+		h = (h + 1)	% primo;
 	}
 	return 0;
 }
@@ -182,21 +188,21 @@ int main(){
 		{
 		    int vdd = add(hs, n, n, primo, &gasto);
 		    hs->size += 1;
-		    printf("%d %d %d\n", op, vdd, gasto);
+		    printf("%s %d %d %d\n", cmd,  op, vdd, gasto);
 		}
 		if(!strcmp(cmd, "DEL"))
 		{
 		    int vdd = rmv(hs, n, &gasto);
-			printf("%d %d %d\n", op, vdd, gasto);
+			printf("%s %d %d %d\n", cmd ,op, vdd, gasto);
 		}
 		if(!strcmp(cmd, "HAS"))
 		{
 		    int vdd = get(hs, n, &gasto);
-			printf("%d %d %d\n", op, vdd , gasto);
+			printf("%s %d %d %d\n", cmd, op, vdd , gasto);
 		}
 		if(!strcmp(cmd, "PRT"))
 		{
-			printf("%d %d %d %d\n", op, primo, hs->size,  M_lista);
+			printf("%s %d %d %d %d\n", cmd, op, primo, hs->size,  M_lista);
 		}
         
 		op += 1;
